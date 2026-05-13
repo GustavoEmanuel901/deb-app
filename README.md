@@ -44,5 +44,5 @@ npm install
 ##### Execute o servidor de desenvolvimento
 ng serve
 
-# O frontend estará disponível em:
-# http://localhost:4200
+##### O frontend estará disponível em:
+ http://localhost:4200
