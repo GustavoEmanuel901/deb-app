@@ -1,0 +1,38 @@
+@DebtManagement.API_HostAddress = http://localhost:5267
+
+### Obter todos os débitos
+GET {{DebtManagement.API_HostAddress}}/api/debts
+Accept: application/json
+
+### Obter débito por ID
+GET {{DebtManagement.API_HostAddress}}/api/debts/550e8400-e29b-41d4-a716-446655440000
+Accept: application/json
+
+### Criar novo débito
+POST {{DebtManagement.API_HostAddress}}/api/debts
+Content-Type: application/json
+
+{
+  "titleNumber": "001/2024",
+  "debtorName": "João da Silva",
+  "debtorCpf": "123.456.789-00",
+  "interestRate": 1.5,
+  "fineRate": 2.0,
+  "installments": [
+    {
+      "number": 1,
+      "dueDate": "2024-05-01",
+      "amount": 1000.00
+    },
+    {
+      "number": 2,
+      "dueDate": "2024-06-01",
+      "amount": 1000.00
+    },
+    {
+      "number": 3,
+      "dueDate": "2024-07-01",
+      "amount": 1000.00
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\bin\Release\net8.0\DebtManagement.Domain.deps.json
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\bin\Release\net8.0\DebtManagement.Domain.dll
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\bin\Release\net8.0\DebtManagement.Domain.pdb
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\DebtManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\DebtManagement.Domain.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\DebtManagement.Domain.AssemblyInfo.cs
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\DebtManagement.Domain.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\DebtManagement.Domain.dll
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\refint\DebtManagement.Domain.dll
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\DebtManagement.Domain.pdb
+c:\Users\User\Desktop\deb\backend\DebtManagement.Domain\obj\Release\net8.0\ref\DebtManagement.Domain.dll

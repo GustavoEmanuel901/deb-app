@@ -1,0 +1,220 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <!-- Mensagens de feedback -->
+    <div
+      *ngIf="showSuccessMessage"
+      class="mb-4 bg-green-50 border-l-4 border-green-500 p-4 rounded-md animate-fade-in"
+    >
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-green-700">Dívida cadastrada com sucesso! Redirecionando...</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showErrorMessage" class="mb-4 bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-red-700">{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulário -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="text-xl font-bold text-white">Cadastrar Nova Dívida</h3>
+        <p class="text-primary-100 text-sm mt-1">Preencha os dados do título e suas parcelas</p>
+      </div>
+
+      <form [formGroup]="debtForm" (ngSubmit)="onSubmit()" class="p-6">
+        <!-- Dados da Dívida -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="label">Número do Título *</label>
+            <input
+              type="text"
+              class="input"
+              [class.input-error]="
+                debtForm.get('titleNumber')?.invalid && debtForm.get('titleNumber')?.touched
+              "
+              formControlName="titleNumber"
+              placeholder="Ex: 101010"
+            />
+            <p
+              *ngIf="debtForm.get('titleNumber')?.invalid && debtForm.get('titleNumber')?.touched"
+              class="mt-1 text-xs text-red-600"
+            >
+              Número do título é obrigatório
+            </p>
+          </div>
+
+          <div>
+            <label class="label">Nome do Devedor *</label>
+            <input
+              type="text"
+              class="input"
+              [class.input-error]="
+                debtForm.get('debtorName')?.invalid && debtForm.get('debtorName')?.touched
+              "
+              formControlName="debtorName"
+              placeholder="Nome completo"
+            />
+            <p
+              *ngIf="debtForm.get('debtorName')?.invalid && debtForm.get('debtorName')?.touched"
+              class="mt-1 text-xs text-red-600"
+            >
+              Nome do devedor é obrigatório
+            </p>
+          </div>
+
+          <div>
+            <label class="label">CPF do Devedor *</label>
+            <input
+              type="text"
+              class="input"
+              [class.input-error]="
+                debtForm.get('debtorCpf')?.invalid && debtForm.get('debtorCpf')?.touched
+              "
+              formControlName="debtorCpf"
+              placeholder="000.000.000-00"
+              (input)="formatCPF($event)"
+            />
+            <p
+              *ngIf="debtForm.get('debtorCpf')?.invalid && debtForm.get('debtorCpf')?.touched"
+              class="mt-1 text-xs text-red-600"
+            >
+              <span *ngIf="debtForm.get('debtorCpf')?.errors?.['required']">CPF é obrigatório</span>
+              <span *ngIf="debtForm.get('debtorCpf')?.errors?.['invalidCpf']">CPF inválido</span>
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="label">% de Juros *</label>
+              <input
+                type="number"
+                step="0.01"
+                class="input"
+                [class.input-error]="
+                  debtForm.get('interestRate')?.invalid && debtForm.get('interestRate')?.touched
+                "
+                formControlName="interestRate"
+                placeholder="0.00"
+              />
+            </div>
+            <div>
+              <label class="label">% de Multa *</label>
+              <input
+                type="number"
+                step="0.01"
+                class="input"
+                [class.input-error]="
+                  debtForm.get('fineRate')?.invalid && debtForm.get('fineRate')?.touched
+                "
+                formControlName="fineRate"
+                placeholder="0.00"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Parcelas -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="text-lg font-semibold text-gray-900">Parcelas</h4>
+            <button type="button" class="btn btn-success text-sm" (click)="addInstallment()">
+              <svg
+                class="inline-block w-4 h-4 mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+              Adicionar Parcela
+            </button>
+          </div>
+
+          <div formArrayName="installments" class="space-y-4">
+            <div
+              *ngFor="let installment of installments.controls; let i = index"
+              [formGroupName]="i"
+              class="bg-gray-50 rounded-lg p-4 border border-gray-200"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="md:col-span-2">
+                  <label class="label text-sm">Parcela #</label>
+                  <input type="text" class="input bg-gray-100" formControlName="number" readonly />
+                </div>
+                <div class="md:col-span-4">
+                  <label class="label text-sm">Data Vencimento *</label>
+                  <input type="date" class="input" formControlName="dueDate" />
+                </div>
+                <div class="md:col-span-4">
+                  <label class="label text-sm">Valor *</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    class="input"
+                    formControlName="amount"
+                    placeholder="0.00"
+                  />
+                </div>
+                <div class="md:col-span-2 flex items-end">
+                  <button
+                    type="button"
+                    class="btn btn-danger text-sm w-full"
+                    (click)="removeInstallment(i)"
+                    [disabled]="installments.length === 1"
+                  >
+                    Remover
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 bg-blue-50 rounded-lg p-4 border border-blue-200">
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-medium text-blue-900">Total das Parcelas:</span>
+              <span class="text-xl font-bold text-blue-900"
+                >R$ {{ getTotalValue() | number: '1.2-2' }}</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+          <button type="button" class="btn btn-secondary" routerLink="/debts">Cancelar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="debtForm.invalid">
+            Salvar Dívida
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

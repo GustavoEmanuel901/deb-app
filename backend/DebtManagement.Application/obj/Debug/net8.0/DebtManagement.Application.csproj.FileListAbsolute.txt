@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\bin\Debug\net8.0\DebtManagement.Application.deps.json
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\bin\Debug\net8.0\DebtManagement.Application.dll
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\bin\Debug\net8.0\DebtManagement.Application.pdb
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\bin\Debug\net8.0\DebtManagement.Domain.dll
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\bin\Debug\net8.0\DebtManagement.Domain.pdb
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtManagement.Application.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtManagement.Application.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtManagement.Application.AssemblyInfo.cs
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtManagement.Application.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtMana.412BF515.Up2Date
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtManagement.Application.dll
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\refint\DebtManagement.Application.dll
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\DebtManagement.Application.pdb
+C:\Users\User\Desktop\deb\backend\DebtManagement.Application\obj\Debug\net8.0\ref\DebtManagement.Application.dll
