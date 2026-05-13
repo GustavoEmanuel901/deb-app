@@ -14,34 +14,34 @@ Antes de começar, certifique-se de ter instalado:
 
 #### Backend
 
-# Clone o repositório
+##### Clone o repositório
 git clone https://github.com/seu-usuario/debt-management-system.git
 cd debt-management-system/backend
 
-# Restaure os pacotes NuGet
+##### Restaure os pacotes NuGet
 dotnet restore
 
-# Execute as migrações (se usar SQL Server)
+##### Execute as migrações (se usar SQL Server)
 cd DebtManagement.API
 dotnet ef database update
 
-# Execute a API
+##### Execute a API
 dotnet run
 
-# A API estará disponível em:
-# https://localhost:7000/swagger (Swagger UI)
-# http://localhost:5000 (HTTP)
+A API estará disponível em:
+https://localhost:7000/swagger (Swagger UI)
+http://localhost:5000 (HTTP)
 
 
 #### Frontend
 
-# Em outro terminal, navegue até a pasta do frontend
+##### Em outro terminal, navegue até a pasta do frontend
 cd frontend/debt-management-app
 
-# Instale as dependências
+##### Instale as dependências
 npm install
 
-# Execute o servidor de desenvolvimento
+##### Execute o servidor de desenvolvimento
 ng serve
 
 # O frontend estará disponível em:
